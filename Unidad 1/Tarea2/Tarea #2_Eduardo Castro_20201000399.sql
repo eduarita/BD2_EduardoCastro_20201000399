@@ -1,6 +1,7 @@
 /*  Tarea 2
     Eduardo Josué Castro Arita - 20201000399
 */
+SET SERVEROUTPUT ON;
 
 --Ejercicio 1
 DECLARE
