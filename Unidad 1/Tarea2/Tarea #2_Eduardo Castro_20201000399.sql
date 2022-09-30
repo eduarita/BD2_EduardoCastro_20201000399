@@ -1,6 +1,10 @@
 /*  Tarea 2
     Eduardo Josué Castro Arita - 20201000399
+    
+    - Ejecutar individualmente los ejercicios
 */
+
+
 SET SERVEROUTPUT ON;
 
 --Ejercicio 1
@@ -28,7 +32,7 @@ DECLARE
     Numero number;
     resultado number;
 BEGIN
-    Numero:=15;
+    Numero:=12;
     resultado:= MOD(Numero,2);
     
     IF resultado = 0 THEN
@@ -69,7 +73,7 @@ DECLARE
     Salario_max number;
     Salario_min number;
 BEGIN
-    SELECT MAX(MAX_SALARY) INTO Salario_max FROM JOBS INNER JOIN ;
+    SELECT MAX(MAX_SALARY) INTO Salario_max FROM JOBS;
     SELECT MIN(MIN_SALARY) INTO Salario_min FROM JOBS;
     DBMS_OUTPUT.put_line('El salario maximo de la empresa es: ' || Salario_max);
     DBMS_OUTPUT.put_line('El salario minimo de la empresa es: ' || Salario_min);
