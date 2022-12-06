@@ -21,15 +21,13 @@ SELECT
 FROM `bigquery-public-data.covid19_covidtracking.summary`
 
 -- Ejercicio #3
-SELECT 
-  channelGrouping, 
-  SUM(totals.pageviews) as pageviews,
-FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
-GROUP BY channelGrouping
-
--- SUBCONSULTA SUGERIDA
-SELECT totals.pageviews FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
-GROUP BY totals.pageviews
+SELECT channelGrouping, pageviews, pageviews/(SUM(pageviews) OVER()) AS porcentaje_del_total, AVG(pageviews) OVER() AS promedio
+FROM
+(-- Subconsulta
+  SELECT channelGrouping,SUM(totals.pageviews) AS pageviews FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
+  GROUP BY channelGrouping,date
+)GROUP BY channelGrouping, pageviews
+ORDER BY porcentaje_del_total DESC
 
 -- Ejercicio #4
 SELECT
